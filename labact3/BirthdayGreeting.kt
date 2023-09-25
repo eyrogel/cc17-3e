@@ -1,0 +1,29 @@
+fun main() {
+    val age = 21 * 365
+    val name = "Aero Gel"
+    val border = "===%%%"
+    
+    printBorder(border)
+	print("Happy Birthday! $name \n")
+    printBorder(border)
+    print("I am $age days old\n")
+    print("$age days old is the best age to learn Kotlin!\n")
+    
+    //Let's print cake
+    println("   ,,,,,   ")
+    println("   |||||   ")
+    println(" =========")
+    println("@@@@@@@@@@@")
+    println("{~@~@~@~@~}")
+    println("@@@@@@@@@@@")
+    println("")
+    
+    print ("$name is already $age days old!\n")    
+}
+fun printBorder(border:String){
+    val timesToRepeat = 4
+    repeat(timesToRepeat){
+        print(border)
+    }
+    println()
+}

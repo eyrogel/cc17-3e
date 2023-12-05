@@ -1,0 +1,596 @@
+Index: app/src/main/res/layout/item_post.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/item_post.xml b/app/src/main/res/layout/item_post.xml
+new file mode 100644
+--- /dev/null	(date 1701780037429)
++++ b/app/src/main/res/layout/item_post.xml	(date 1701780037429)
+@@ -0,0 +1,101 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="wrap_content">
++
++    <androidx.cardview.widget.CardView
++        android:layout_width="395dp"
++        android:layout_height="294dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent">
++
++        <androidx.constraintlayout.widget.ConstraintLayout
++            android:layout_width="match_parent"
++            android:layout_height="match_parent">
++
++            <RelativeLayout
++                android:layout_width="357dp"
++                android:layout_height="169dp"
++                android:layout_marginBottom="52dp"
++                android:background="@drawable/outline_black"
++                android:orientation="vertical"
++                app:layout_constraintBottom_toBottomOf="parent"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintHorizontal_bias="0.368"
++                app:layout_constraintStart_toStartOf="parent">
++
++                <TextView
++                    android:id="@+id/budgetView"
++                    android:layout_width="84dp"
++                    android:layout_height="wrap_content"
++                    android:layout_alignParentEnd="true"
++                    android:layout_alignParentBottom="true"
++                    android:layout_marginEnd="17dp"
++                    android:layout_marginBottom="133dp"
++                    android:textSize="15sp"
++                    android:textStyle="bold" />
++
++                <TextView
++                    android:id="@+id/taskView"
++                    android:layout_width="279dp"
++                    android:layout_height="101dp"
++                    android:layout_alignParentEnd="true"
++                    android:layout_alignParentBottom="true"
++                    android:layout_marginEnd="13dp"
++                    android:layout_marginBottom="33dp"
++                    android:textSize="13sp" />
++
++                <TextView
++                    android:id="@+id/deadlineView"
++                    android:layout_width="127dp"
++                    android:layout_height="wrap_content"
++                    android:layout_alignParentEnd="true"
++                    android:layout_alignParentBottom="true"
++                    android:layout_marginEnd="11dp"
++                    android:layout_marginBottom="9dp"
++                    android:textSize="11sp" />
++            </RelativeLayout>
++
++            <ImageView
++                android:id="@+id/imageView"
++                android:layout_width="64dp"
++                android:layout_height="64dp"
++                android:layout_marginStart="16dp"
++                android:layout_marginTop="8dp"
++                android:src="@drawable/default_image"
++                app:civ_border_color="#FF000000"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintTop_toTopOf="parent" />
++
++            <TextView
++                android:id="@+id/nameView"
++                android:layout_width="284dp"
++                android:layout_height="48dp"
++                android:layout_marginTop="8dp"
++                android:layout_marginEnd="24dp"
++                android:textSize="25sp"
++                android:textStyle="bold"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintTop_toTopOf="parent" />
++
++            <Button
++                android:id="@+id/buttonApply"
++                android:layout_width="132dp"
++                android:layout_height="31dp"
++                android:layout_gravity="end"
++                android:layout_marginEnd="24dp"
++                android:layout_marginBottom="16dp"
++                android:background="@drawable/button"
++                android:text="Apply"
++                app:layout_constraintBottom_toBottomOf="parent"
++                app:layout_constraintEnd_toEndOf="parent" />
++        </androidx.constraintlayout.widget.ConstraintLayout>
++
++
++    </androidx.cardview.widget.CardView>
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/recycler_view_my_posts.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/recycler_view_my_posts.xml b/app/src/main/res/layout/recycler_view_my_posts.xml
+new file mode 100644
+--- /dev/null	(date 1701777589919)
++++ b/app/src/main/res/layout/recycler_view_my_posts.xml	(date 1701777589919)
+@@ -0,0 +1,100 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++    <androidx.cardview.widget.CardView
++        android:layout_width="395dp"
++        android:layout_height="294dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent">
++
++        <androidx.constraintlayout.widget.ConstraintLayout
++            android:layout_width="match_parent"
++            android:layout_height="match_parent">
++
++            <RelativeLayout
++                android:layout_width="357dp"
++                android:layout_height="169dp"
++                android:layout_marginBottom="52dp"
++                android:background="@drawable/outline_black"
++                android:orientation="vertical"
++                app:layout_constraintBottom_toBottomOf="parent"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintHorizontal_bias="0.368"
++                app:layout_constraintStart_toStartOf="parent">
++
++                <TextView
++                    android:id="@+id/budgetView"
++                    android:layout_width="84dp"
++                    android:layout_height="wrap_content"
++                    android:layout_alignParentEnd="true"
++                    android:layout_alignParentBottom="true"
++                    android:layout_marginEnd="17dp"
++                    android:layout_marginBottom="133dp"
++                    android:textSize="15sp"
++                    android:textStyle="bold" />
++
++                <TextView
++                    android:id="@+id/taskView"
++                    android:layout_width="279dp"
++                    android:layout_height="101dp"
++                    android:layout_alignParentEnd="true"
++                    android:layout_alignParentBottom="true"
++                    android:layout_marginEnd="13dp"
++                    android:layout_marginBottom="33dp"
++                    android:textSize="13sp" />
++
++                <TextView
++                    android:id="@+id/deadlineView"
++                    android:layout_width="127dp"
++                    android:layout_height="wrap_content"
++                    android:layout_alignParentEnd="true"
++                    android:layout_alignParentBottom="true"
++                    android:layout_marginEnd="11dp"
++                    android:layout_marginBottom="9dp"
++                    android:textSize="11sp" />
++            </RelativeLayout>
++
++            <ImageView
++                android:id="@+id/imageView"
++                android:layout_width="64dp"
++                android:layout_height="64dp"
++                android:layout_marginStart="16dp"
++                android:layout_marginTop="8dp"
++                android:src="@drawable/default_image"
++                app:civ_border_color="#FF000000"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintTop_toTopOf="parent" />
++
++            <TextView
++                android:id="@+id/nameView"
++                android:layout_width="284dp"
++                android:layout_height="48dp"
++                android:layout_marginTop="8dp"
++                android:layout_marginEnd="24dp"
++                android:textSize="25sp"
++                android:textStyle="bold"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintTop_toTopOf="parent" />
++
++            <Button
++                android:id="@+id/buttonApply"
++                android:layout_width="132dp"
++                android:layout_height="31dp"
++                android:layout_gravity="end"
++                android:layout_marginEnd="24dp"
++                android:layout_marginBottom="16dp"
++                android:background="@drawable/button"
++                android:text="Apply"
++                app:layout_constraintBottom_toBottomOf="parent"
++                app:layout_constraintEnd_toEndOf="parent" />
++        </androidx.constraintlayout.widget.ConstraintLayout>
++
++
++    </androidx.cardview.widget.CardView>
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_feed.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_feed.xml b/app/src/main/res/layout/fragment_feed.xml
+--- a/app/src/main/res/layout/fragment_feed.xml	
++++ b/app/src/main/res/layout/fragment_feed.xml	(date 1701778322554)
+@@ -7,7 +7,8 @@
+ 
+     <RelativeLayout
+         android:layout_width="match_parent"
+-        android:layout_height="match_parent">
++        android:layout_height="match_parent"
++        android:id="@+id/otherViewId">
+ 
+         <Button
+             android:id="@+id/postsButton"
+@@ -35,16 +36,8 @@
+             android:background="@drawable/button_selector"
+             android:text="Offered Tasks" />
+ 
+-        <FrameLayout
+-            android:id="@+id/frameLayout1"
+-            android:layout_width="match_parent"
+-            android:layout_height="574dp"
+-            android:layout_alignParentBottom="true"
+-            android:layout_marginBottom="2dp">
+-
+-
+-        </FrameLayout>
+ 
+     </RelativeLayout>
+ 
++
+ </FrameLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_my_posts.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_my_posts.xml b/app/src/main/res/layout/fragment_my_posts.xml
+--- a/app/src/main/res/layout/fragment_my_posts.xml	
++++ b/app/src/main/res/layout/fragment_my_posts.xml	(date 1701778455171)
+@@ -1,63 +1,19 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     tools:context=".MyPostsFragment">
+ 
+-    <!-- TODO: Update blank fragment layout -->
+-    <LinearLayout
++    <androidx.recyclerview.widget.RecyclerView
++        android:id="@+id/recyclerView"
+         android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:orientation="vertical"
+-        android:padding="16dp"
+-        android:background="@drawable/outline_black">
+-
+-        <!-- Task Title -->
+-        <TextView
+-            android:id="@+id/textViewTitle"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:textSize="18sp"
+-            android:textStyle="bold"
+-            android:textColor="@android:color/black"
+-            android:layout_marginBottom="8dp"/>
+-
+-        <!-- Task Description -->
+-        <TextView
+-            android:id="@+id/textViewTask"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:textSize="16sp"
+-            android:textColor="@android:color/black"
+-            android:layout_marginBottom="8dp"/>
+-
+-        <!-- Task Budget -->
+-        <TextView
+-            android:id="@+id/textViewBudget"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:textSize="16sp"
+-            android:textColor="@android:color/black"
+-            android:layout_marginBottom="8dp"/>
+-
+-        <!-- Task Deadline -->
+-        <TextView
+-            android:id="@+id/textViewDeadline"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:textSize="16sp"
+-            android:textColor="@android:color/black"
+-            android:layout_marginBottom="8dp"/>
++        android:layout_height="match_parent"
++        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"/>
+ 
+-        <!-- Button to Apply -->
+-        <Button
+-            android:id="@+id/buttonApply"
+-            android:layout_width="98dp"
+-            android:layout_height="31dp"
+-            android:layout_gravity="end"
+-            android:background="@drawable/button"
+-            android:text="Apply" />
+-    </LinearLayout>
+-
+-</FrameLayout>
+\ No newline at end of file
++</FrameLayout>
+Index: app/src/main/java/com/teamviewer/collabmates/CreateFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/teamviewer/collabmates/CreateFragment.java b/app/src/main/java/com/teamviewer/collabmates/CreateFragment.java
+--- a/app/src/main/java/com/teamviewer/collabmates/CreateFragment.java	
++++ b/app/src/main/java/com/teamviewer/collabmates/CreateFragment.java	(date 1701773240748)
+@@ -10,6 +10,7 @@
+ import android.widget.EditText;
+ import androidx.annotation.NonNull;
+ import androidx.fragment.app.Fragment;
++import androidx.fragment.app.FragmentTransaction;
+ import com.google.android.gms.tasks.OnFailureListener;
+ import com.google.android.gms.tasks.OnSuccessListener;
+ import com.google.firebase.firestore.DocumentReference;
+@@ -93,6 +94,12 @@
+         String budget = budgetEditText.getText().toString();
+         String deadline = calendarEditText.getText().toString();
+ 
++        // Check for empty fields
++        if (title.isEmpty() || task.isEmpty() || budget.isEmpty() || deadline.isEmpty()) {
++            // Show a message or handle the case where fields are empty
++            return;
++        }
++
+         // Create a Map to represent the data
+         Map<String, Object> taskData = new HashMap<>();
+         taskData.put("title", title);
+@@ -107,15 +114,47 @@
+                     @Override
+                     public void onSuccess(DocumentReference documentReference) {
+                         // Data added successfully
+-                        // You can add any further actions or messages here
++                        // Clear input fields
++                        titleEditText.setText("");
++                        taskEditText.setText("");
++                        budgetEditText.setText("");
++                        calendarEditText.setText("");
++
++                        // After saving, navigate to FeedFragment
++                        navigateToFeedFragment(title, task, budget, deadline);
+                     }
+                 })
+                 .addOnFailureListener(new OnFailureListener() {
+                     @Override
+                     public void onFailure(@NonNull Exception e) {
+                         // Handle failure
++                        // You might want to log the exception or display an error message
+                     }
+                 });
+     }
+-}
++
++    private void navigateToFeedFragment(String title, String task, String budget, String deadline) {
++        // Create an instance of FeedFragment
++        FeedFragment feedFragment = FeedFragment.newInstance();
++
++        // Pass data to FeedFragment
++        Bundle bundle = new Bundle();
++        bundle.putString("title", title);
++        bundle.putString("task", task);
++        bundle.putString("budget", budget);
++        bundle.putString("deadline", deadline);
++        feedFragment.setArguments(bundle);
++
++        // Begin the transaction
++        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
++
++        // Replace the contents of the container with the new fragment
++        transaction.replace(R.id.frameLayout1, feedFragment);
++
++        // Add the transaction to the back stack
++        transaction.addToBackStack(null);
+ 
++        // Commit the transaction
++        transaction.commit();
++    }
++}
+Index: app/src/main/java/com/teamviewer/collabmates/MyPostsFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/teamviewer/collabmates/MyPostsFragment.java b/app/src/main/java/com/teamviewer/collabmates/MyPostsFragment.java
+--- a/app/src/main/java/com/teamviewer/collabmates/MyPostsFragment.java	
++++ b/app/src/main/java/com/teamviewer/collabmates/MyPostsFragment.java	(date 1701778708154)
+@@ -1,64 +1,76 @@
+ package com.teamviewer.collabmates;
+ 
+ import android.os.Bundle;
+-
+-import androidx.fragment.app.Fragment;
+-
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
++import androidx.fragment.app.Fragment;
++import androidx.lifecycle.ViewModelProvider;
++import androidx.recyclerview.widget.LinearLayoutManager;
++import androidx.recyclerview.widget.RecyclerView;
++import com.google.firebase.firestore.CollectionReference;
++import com.google.firebase.firestore.FirebaseFirestore;
++import com.google.firebase.firestore.QueryDocumentSnapshot;
++import com.google.firebase.firestore.QuerySnapshot;
++import java.util.ArrayList;
++import java.util.List;
+ 
+-/**
+- * A simple {@link Fragment} subclass.
+- * Use the {@link MyPostsFragment#newInstance} factory method to
+- * create an instance of this fragment.
+- */
+ public class MyPostsFragment extends Fragment {
+ 
+-    // TODO: Rename parameter arguments, choose names that match
+-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+-    private static final String ARG_PARAM1 = "param1";
+-    private static final String ARG_PARAM2 = "param2";
+-
+-    // TODO: Rename and change types of parameters
+-    private String mParam1;
+-    private String mParam2;
++    private RecyclerView recyclerView;
++    private MyPostsAdapter myPostsAdapter;
++    private List<Task> taskList; // Assuming Task is your data model
++    private FirebaseFirestore db;
++    private CollectionReference tasksCollection;
++    private SharedViewModel sharedViewModel;  // Add this line
+ 
+     public MyPostsFragment() {
+         // Required empty public constructor
+     }
+ 
+-    /**
+-     * Use this factory method to create a new instance of
+-     * this fragment using the provided parameters.
+-     *
+-     * @param param1 Parameter 1.
+-     * @param param2 Parameter 2.
+-     * @return A new instance of fragment MyPostsFragment.
+-     */
+-    // TODO: Rename and change types and number of parameters
+-    public static MyPostsFragment newInstance(String param1, String param2) {
+-        MyPostsFragment fragment = new MyPostsFragment();
+-        Bundle args = new Bundle();
+-        args.putString(ARG_PARAM1, param1);
+-        args.putString(ARG_PARAM2, param2);
+-        fragment.setArguments(args);
+-        return fragment;
++    public static MyPostsFragment newInstance() {
++        return new MyPostsFragment();
+     }
+ 
+     @Override
+-    public void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        if (getArguments() != null) {
+-            mParam1 = getArguments().getString(ARG_PARAM1);
+-            mParam2 = getArguments().getString(ARG_PARAM2);
+-        }
++    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
++        View rootView = inflater.inflate(R.layout.fragment_my_posts, container, false);
++
++        // Initialize Firestore
++        db = FirebaseFirestore.getInstance();
++        tasksCollection = db.collection("tasks"); // Replace with your collection name
++
++        // Initialize RecyclerView
++        recyclerView = rootView.findViewById(R.id.recyclerView);
++        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
++        taskList = new ArrayList<>();
++        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);  // Add this line
++        myPostsAdapter = new MyPostsAdapter(taskList);  // Modify this line
++        recyclerView.setAdapter(myPostsAdapter);
++
++        // Load data from Firestore
++        loadDataFromFirestore();
++
++        return rootView;
+     }
++
++    // ... (existing code)
+ 
+-    @Override
+-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+-                             Bundle savedInstanceState) {
+-        // Inflate the layout for this fragment
+-        return inflater.inflate(R.layout.fragment_my_posts, container, false);
++    private void loadDataFromFirestore() {
++        tasksCollection.get().addOnCompleteListener(task -> {
++            if (task.isSuccessful()) {
++                taskList.clear(); // Clear existing data
++                for (QueryDocumentSnapshot document : task.getResult()) {
++                    // Convert Firestore document to your Task model
++                    Task taskModel = document.toObject(Task.class);
++                    taskList.add(taskModel);
++                }
++                myPostsAdapter.notifyDataSetChanged();
++            } else {
++                // Handle failure
++            }
++        });
+     }
+-}
+\ No newline at end of file
++}
+Index: app/src/main/java/com/teamviewer/collabmates/SharedViewModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/teamviewer/collabmates/SharedViewModel.java b/app/src/main/java/com/teamviewer/collabmates/SharedViewModel.java
+new file mode 100644
+--- /dev/null	(date 1701773499900)
++++ b/app/src/main/java/com/teamviewer/collabmates/SharedViewModel.java	(date 1701773499900)
+@@ -0,0 +1,18 @@
++package com.teamviewer.collabmates;
++
++import androidx.lifecycle.LiveData;
++import androidx.lifecycle.MutableLiveData;
++import androidx.lifecycle.ViewModel;
++
++public class SharedViewModel extends ViewModel {
++
++    private MutableLiveData<Task> selectedTask = new MutableLiveData<>();
++
++    public void selectTask(Task task) {
++        selectedTask.setValue(task);
++    }
++
++    public LiveData<Task> getSelectedTask() {
++        return selectedTask;
++    }
++}
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+--- a/app/build.gradle.kts	
++++ b/app/build.gradle.kts	(date 1701773689665)
+@@ -43,6 +43,7 @@
+     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+     implementation("de.hdodenhof:circleimageview:3.1.0")
+     implementation("com.google.firebase:firebase-firestore:24.9.1")
++    implementation("androidx.lifecycle:lifecycle-viewmodel:2.6.2")
+     testImplementation("junit:junit:4.13.2")
+     androidTestImplementation("androidx.test.ext:junit:1.1.5")
+     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

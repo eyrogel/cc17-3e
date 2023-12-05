@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="245dp"
+            android:layout_marginBottom="480dp"
+            android:src="@drawable/default_image"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/courseTextView"
+            android:layout_width="223dp"
+            android:layout_height="36dp"
+            android:layout_below="@id/idNumberTextView"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="21dp"
+            android:text="Course: Information Technology"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="209dp"
+            android:layout_height="45dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="79dp"
+            android:layout_marginEnd="35dp"
+            android:textSize="25sp" />
+
+
+        <TextView
+            android:id="@+id/idNumberTextView"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameTextView"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/signOutButton"
+            android:layout_width="163dp"
+            android:layout_height="55dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="124dp"
+            android:layout_marginEnd="124dp"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/button"
+            android:text="Sign Out" />
+
+        <Button
+            android:id="@+id/ratingsButton"
+            android:layout_width="174dp"
+            android:layout_height="31dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="37dp"
+            android:layout_marginBottom="393dp"
+            android:background="@drawable/button_selector"
+            android:text="Ratings" />
+
+        <Button
+            android:id="@+id/portfolioButton"
+            android:layout_width="174dp"
+            android:layout_height="31dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="37dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="200dp"
+            android:layout_marginBottom="393dp"
+            android:background="@drawable/button_selector"
+            android:text="Portfolio" />
+
+    </RelativeLayout>
+
+
+</FrameLayout>

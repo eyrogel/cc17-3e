@@ -1,0 +1,108 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Your background layout (if any) goes here -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="746dp"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextTitle"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/outline_black"
+            android:hint="Task Title"
+            android:padding="8dp"
+            android:textSize="16sp" />
+
+        <!-- Task Input -->
+        <EditText
+            android:id="@+id/editTextTask"
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/outline_black"
+            android:gravity="top"
+            android:hint="What task are you offering?"
+            android:padding="8dp"
+            android:textSize="16sp" />
+
+        <!-- Budget Input -->
+        <EditText
+            android:id="@+id/editTextBudget"
+            android:layout_width="309dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/outline_black"
+            android:hint="How much is your budget for this task?"
+            android:inputType="number"
+            android:padding="8dp"
+            android:textSize="16sp" />
+
+        <!-- Calendar Input -->
+        <RelativeLayout
+            android:layout_width="278dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/outline_black">
+
+            <EditText
+                android:id="@+id/editTextCalendar"
+                android:layout_width="303dp"
+                android:layout_height="43dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="0dp"
+                android:background="@null"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Set the deadline for the task"
+                android:inputType="none"
+                android:onClick="showDatePickerDialog"
+                android:padding="8dp"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/calendarIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_calendar" />
+        </RelativeLayout>
+
+        <!-- Post Task Button -->
+        <Button
+            android:id="@+id/buttonPostTask"
+            android:layout_width="175dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button"
+            android:text="Post Task"
+            android:textAppearance="@style/button"
+            android:layout_gravity="right"/>
+
+    </LinearLayout>
+
+</FrameLayout>

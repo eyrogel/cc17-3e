@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EDF4F3"
+    tools:context="com.teamviewer.collabmates.SignInActivity">
+
+    <View
+        android:id="@+id/logo_collab"
+        android:layout_width="238dp"
+        android:layout_height="36dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="166dp"
+        android:background="@drawable/logo_collab" />
+
+    <RelativeLayout
+        android:id="@+id/input1"
+        android:layout_width="345dp"
+        android:layout_height="64dp"
+        android:layout_alignBottom="@+id/logo_collab"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="-110dp"
+        android:background="@drawable/input">
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="342dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:autofillHints=""
+            android:background="@null"
+            android:ems="10"
+            android:hint="Enter your email"
+            android:inputType="textEmailAddress" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/input2"
+        android:layout_width="345dp"
+        android:layout_height="64dp"
+        android:layout_alignBottom="@+id/logo_collab"
+        android:layout_marginBottom="-200dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/input"
+        tools:ignore="DuplicateIds">
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:layout_marginStart="15dp"
+            android:hint="Enter your password"
+            android:background="@null"
+            android:inputType="textPassword"
+            android:autofillHints="" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/signin_button"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@+id/logo_collab"
+        android:layout_marginStart="77dp"
+        android:layout_marginBottom="-283dp"
+        android:background="@drawable/button"
+        android:elevation="20dp"
+        android:gravity="center_vertical|center"
+        android:text="@string/signin"
+        android:textAppearance="@style/button" />
+
+    <Button
+        android:id="@+id/signup_button"
+        android:layout_width="300dp"
+        android:layout_height="41dp"
+        android:layout_alignBottom="@+id/signin_button"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="-60dp"
+        android:background="@drawable/signup_button"
+        android:gravity="center_horizontal|top"
+        android:text="@string/no_account"
+        android:textAppearance="@style/signup_button" />
+
+</RelativeLayout>

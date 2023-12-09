@@ -103,7 +103,7 @@ public class CreateFragment extends Fragment {
             return;
         }
 
-        // Retrieve user's name from Realtime Database
+        // Retrieve user's name and userId from Realtime Database
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users");
         String userId = currentUser.getUid();
 
@@ -138,6 +138,7 @@ public class CreateFragment extends Fragment {
                     taskData.put("budget", budget);
                     taskData.put("deadline", deadline);
                     taskData.put("name", userName);  // Use the retrieved name
+                    taskData.put("userId", userId);  // Add userId
                     taskData.put("timestamp", System.currentTimeMillis());  // Add timestamp
 
                     // Add the data to Firestore

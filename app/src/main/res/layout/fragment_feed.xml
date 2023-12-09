@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,9 +5,9 @@
     tools:context=".FeedFragment">
 
     <RelativeLayout
+        android:id="@+id/otherViewId"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/otherViewId">
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/postsButton"
@@ -16,7 +15,6 @@
             android:layout_height="31dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="25dp"
             android:layout_marginEnd="37dp"
             android:layout_marginBottom="584dp"
             android:background="@drawable/button_selector"
@@ -27,34 +25,45 @@
             android:layout_width="174dp"
             android:layout_height="31dp"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="37dp"
-            android:layout_marginTop="31dp"
             android:layout_marginEnd="200dp"
             android:layout_marginBottom="584dp"
             android:background="@drawable/button_selector"
             android:text="Offered Tasks" />
 
         <FrameLayout
-            android:id="@+id/frameLayout1"
+            android:id="@+id/postsLayout"
             android:layout_width="match_parent"
             android:layout_height="575dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="1dp">
 
-            <include layout="@layout/common_feed_item" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/postsRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp" />
 
         </FrameLayout>
 
+        <FrameLayout
+            android:id="@+id/feedLayout"
+            android:layout_width="match_parent"
+            android:layout_height="575dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="1dp">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/feedRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp" />
+
+        </FrameLayout>
 
     </RelativeLayout>
-
 
 </FrameLayout>

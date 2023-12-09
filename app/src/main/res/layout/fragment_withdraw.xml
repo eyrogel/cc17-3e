@@ -1,10 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".WithdrawFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/withdrawLayout">
+
+        <ImageView
+            android:id="@+id/qrImage"
+            android:layout_width="376dp"
+            android:layout_height="679dp"
+            android:src="@drawable/qrcode"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.542"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.307" />
+
+        <Button
+            android:id="@+id/uploadQrButton"
+            android:layout_width="285dp"
+            android:layout_height="283dp"
+            android:background="@null"
+            app:layout_constraintBottom_toTopOf="@+id/qrTextView"
+            app:layout_constraintEnd_toEndOf="@+id/qrImage"
+            app:layout_constraintHorizontal_bias="0.572"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/qrImage"
+            app:layout_constraintVertical_bias="0.792" />
+
+        <TextView
+            android:id="@+id/qrTextView"
+            android:layout_width="281dp"
+            android:layout_height="81dp"
+            android:text="Upload QR Here"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            app:layout_constraintBottom_toBottomOf="@+id/qrImage"
+            app:layout_constraintEnd_toEndOf="@+id/qrImage"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="@+id/qrImage"
+            app:layout_constraintTop_toTopOf="@+id/qrImage"
+            app:layout_constraintVertical_bias="0.769" />
+
+        <Button
+            android:id="@+id/submitQrButton"
+            android:layout_width="174dp"
+            android:layout_height="31dp"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/button"
+            android:text="Submit"
+            app:layout_constraintBottom_toBottomOf="@+id/qrImage"
+            app:layout_constraintEnd_toEndOf="@+id/qrImage"
+            app:layout_constraintHorizontal_bias="0.929"
+            app:layout_constraintStart_toStartOf="@+id/qrImage"
+            app:layout_constraintTop_toBottomOf="@+id/qrTextView"
+            app:layout_constraintVertical_bias="0.526" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/successLayout"
+        android:layout_width="match_parent"
+        android:layout_height="679dp"
+        android:layout_marginTop="52dp"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="@+id/qrImage"
+        tools:layout_editor_absoluteX="0dp">
+
+
+    </RelativeLayout>
 
 </FrameLayout>

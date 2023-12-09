@@ -1,83 +1,63 @@
 package com.teamviewer.collabmates;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
-public class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.MyPostsViewHolder> {
+public class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.TaskViewHolder> {
 
-    private Context context;
-    private List<Task> taskList;
-    private SharedViewModel sharedViewModel;
+    private List<Task> tasks;
 
-    public MyPostsAdapter(Context context, List<Task> taskList, SharedViewModel sharedViewModel) {
-        this.context = context;
-        this.taskList = taskList;
-        this.sharedViewModel = sharedViewModel;
+    // Constructor to initialize the tasks list
+    public MyPostsAdapter(List<Task> tasksList) {
+        this.tasks = tasks;
+    }
+
+    // Setter method to update the tasks list
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public MyPostsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.common_feed_item, parent, false);
-        return new MyPostsViewHolder(view);
+    public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.common_posts_item, parent, false);
+        return new TaskViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyPostsViewHolder holder, int position) {
-        Task task = taskList.get(position);
-
+    public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
         // Bind data to views in the ViewHolder
-        holder.textViewName.setText(task.getName());
-        holder.textViewTask.setText(task.getTask());
-        holder.textViewBudget.setText(task.getBudget());
-        holder.textViewDeadline.setText(task.getDeadline());
-
-        // Handle item click
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Set the selected task in the shared ViewModel
-                sharedViewModel.selectTask(task);
-            }
-        });
-
-        // Handle button click (if needed)
-        holder.buttonApply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle apply button click
-            }
-        });
+        Task task = tasks.get(position);
+        holder.nameView.setText(task.getName());
+        holder.taskView.setText(task.getTask());
+        holder.budgetView.setText("Php " + task.getBudget());
+        holder.deadlineView.setText("Deadline: " + task.getDeadline());
     }
 
     @Override
     public int getItemCount() {
-        return taskList.size();
+        return tasks != null ? tasks.size() : 0;
     }
 
-    public class MyPostsViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewName;
-        TextView textViewTask;
-        TextView textViewBudget;
-        TextView textViewDeadline;
-        Button buttonApply;
+    static class TaskViewHolder extends RecyclerView.ViewHolder {
+        TextView nameView;
+        TextView taskView;
+        TextView budgetView;
+        TextView deadlineView;
 
-        public MyPostsViewHolder(@NonNull View itemView) {
+        public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            // Initialize views in the ViewHolder
-            textViewName = itemView.findViewById(R.id.nameView);
-            textViewTask = itemView.findViewById(R.id.taskView);
-            textViewBudget = itemView.findViewById(R.id.budgetView);
-            textViewDeadline = itemView.findViewById(R.id.deadlineView);
-            buttonApply = itemView.findViewById(R.id.buttonApply);
+            nameView = itemView.findViewById(R.id.nameView);
+            taskView = itemView.findViewById(R.id.taskView);
+            budgetView = itemView.findViewById(R.id.budgetView);
+            deadlineView = itemView.findViewById(R.id.deadlineView);
         }
     }
 }

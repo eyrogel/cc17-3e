@@ -1,63 +1,118 @@
 package com.teamviewer.collabmates;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link WithdrawFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class WithdrawFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final int PICK_IMAGE_REQUEST = 1;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ImageView qrImage;
+    private Button uploadQrButton;
+    private Button submitQrButton;
+    private ConstraintLayout withdrawLayout;
+    private RelativeLayout successLayout;
+    private Uri selectedImageUri;
 
-    public WithdrawFragment() {
-        // Required empty public constructor
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_withdraw, container, false);
+
+        qrImage = view.findViewById(R.id.qrImage);
+        uploadQrButton = view.findViewById(R.id.uploadQrButton);
+        submitQrButton = view.findViewById(R.id.submitQrButton);
+        withdrawLayout = view.findViewById(R.id.withdrawLayout);
+        successLayout = view.findViewById(R.id.successLayout);
+
+        uploadQrButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
+
+        submitQrButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectedImageUri != null) {
+                    // Proceed with the submission logic
+                    // You can access the selectedImageUri to get the uploaded image
+                    // For example, you can use selectedImageUri.getPath() to get the file path
+
+                    // Hide the withdrawLayout
+                    withdrawLayout.setVisibility(View.GONE);
+
+                    // Show the success layout
+                    showSuccessFragment();
+                } else {
+                    // Show an error message if no image has been uploaded
+                    Toast.makeText(getActivity(), "Please Upload QR Code", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // Add the rest of your logic here...
+
+        return view;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment WithdrawFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static WithdrawFragment newInstance(String param1, String param2) {
-        WithdrawFragment fragment = new WithdrawFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    private void openGallery() {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST);
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+            selectedImageUri = data.getData();
+            // Comment out or remove the following line to avoid displaying the image immediately
+            // qrImage.setImageURI(selectedImageUri);
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_withdraw, container, false);
+    public void showWithdrawLayout() {
+        // Show the withdrawLayout
+        withdrawLayout.setVisibility(View.VISIBLE);
+    }
+
+    public void resetSelectedImage() {
+        // Reset the selected image
+        selectedImageUri = null;
+        // Optionally, clear the displayed image if needed
+        // qrImage.setImageURI(null);
+    }
+
+    // ...
+
+    private void showSuccessFragment() {
+        // Create an instance of SuccessFragment
+        SuccessFragment successFragment = new SuccessFragment();
+
+        // Replace the current fragment with SuccessFragment
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.successLayout, successFragment);
+        transaction.addToBackStack(null); // Optional: Add to back stack if needed
+        transaction.commit();
     }
 }

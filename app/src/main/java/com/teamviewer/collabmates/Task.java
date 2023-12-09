@@ -6,17 +6,19 @@ public class Task {
     private String budget;
     private String deadline;
     private String name;
+    private String userId;  // New field for the user ID
 
     // Required empty constructor for Firebase
     public Task() {
     }
 
-    public Task(String title, String description, String budget, String deadline, String name) {
+    public Task(String title, String task, String budget, String deadline, String name, String userId) {
         this.title = title;
         this.task = task;
         this.budget = budget;
         this.deadline = deadline;
         this.name = name;
+        this.userId = userId;
     }
 
     // Getters and setters (required for Firebase)
@@ -32,7 +34,7 @@ public class Task {
         return task;
     }
 
-    public void setDescription(String task) {
+    public void setTask(String task) {
         this.task = task;
     }
 
@@ -58,5 +60,13 @@ public class Task {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

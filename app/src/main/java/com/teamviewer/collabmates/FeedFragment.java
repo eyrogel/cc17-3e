@@ -1,11 +1,13 @@
 package com.teamviewer.collabmates;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -154,9 +156,9 @@ public class FeedFragment extends Fragment {
         Log.d("FeedFragment", "fetchOtherUsersTasksFromFirestore: User ID - " + userId);
 
         db.collection("tasks")
-                .whereNotEqualTo("userId", userId)  // Exclude tasks created by the current user
-                .orderBy("userId")  // Match the inequality filter property (userId)
-                .orderBy("deadline", Query.Direction.ASCENDING) // Order by a different field, e.g., deadline
+                .whereNotEqualTo("userId", userId)
+                .orderBy("userId")
+                .orderBy("deadline", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -166,12 +168,31 @@ public class FeedFragment extends Fragment {
                             tasks.add(currentTask);
                         }
                         Collections.reverse(tasks);
-                        tasksAdapter.setTaskList(tasks);
+
+                        // Check if the adapter is already initialized
+                        if (tasksAdapter == null) {
+                            // Initialize the TasksAdapter for Offered Tasks
+                            tasksAdapter = new TasksAdapter(requireContext(), tasks, sharedViewModel);
+                            feedRecyclerView.setAdapter(tasksAdapter);
+                        } else {
+                            // Update the existing adapter with new data
+                            tasksAdapter.setTaskList(tasks);
+                        }
 
                         Log.d("FeedFragment", "fetchOtherUsersTasksFromFirestore: Number of tasks retrieved - " + tasks.size());
                     } else {
                         Log.w("FeedFragment", "Error getting documents.", task.getException());
                     }
                 });
+    }
+
+    // Modified showApplyDialog method
+    private void showApplyDialog(Task task) {
+        try {
+            // Call the showApplyDialog method from TasksAdapter
+            tasksAdapter.showApplyDialog(requireContext(), task);
+        } catch (Exception e) {
+            Log.e("FeedFragment", "Error showing Apply dialog: " + e.getMessage());
+        }
     }
 }

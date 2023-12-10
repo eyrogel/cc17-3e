@@ -1,6 +1,8 @@
 package com.teamviewer.collabmates;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
 import java.util.List;
 
 public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.MyPostsViewHolder> {
@@ -50,11 +53,14 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.MyPostsViewH
             }
         });
 
-        // Handle button click (if needed)
+        // Handle button click
         holder.buttonApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle apply button click
+                Log.d("TasksAdapter", "Apply button clicked for task: " + task.getName());
+
+                // Show the Apply dialog
+                showApplyDialog(context, task);
             }
         });
     }
@@ -66,6 +72,11 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.MyPostsViewH
 
     public void setTaskList(List<Task> taskList) {
         this.taskList = taskList;
+        notifyDataSetChanged();
+    }
+
+    public void clearAdapter() {
+        taskList.clear();
         notifyDataSetChanged();
     }
 
@@ -85,6 +96,52 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.MyPostsViewH
             textViewBudget = itemView.findViewById(R.id.budgetView);
             textViewDeadline = itemView.findViewById(R.id.deadlineView);
             buttonApply = itemView.findViewById(R.id.buttonApply);
+
+            // Set click listener for the apply button
+            buttonApply.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Directly handle the button click here
+                    showApplyDialog(context, taskList.get(getAdapterPosition()));
+                }
+            });
+        }
+    }
+
+    // Show the Apply dialog directly within the adapter
+    public void showApplyDialog(Context context, Task task) {
+        try {
+            // Inflate the custom dialog layout
+            View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog_apply, null);
+
+            // Create and show the Apply dialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setView(dialogView);
+
+            AlertDialog alertDialog = builder.create();
+
+            // Initialize views in the Apply dialog
+            Button okayButton = dialogView.findViewById(R.id.btn_yesimsure);
+            Button cancelButton = dialogView.findViewById(R.id.btn_cancel);
+
+            okayButton.setOnClickListener(v -> {
+                // Remove the task from the list
+                int position = taskList.indexOf(task);
+                if (position != -1) {
+                    taskList.remove(position);
+                    notifyItemRemoved(position);
+                }
+
+                alertDialog.dismiss();
+            });
+
+            cancelButton.setOnClickListener(v -> {
+                alertDialog.dismiss();
+            });
+
+            alertDialog.show();
+        } catch (Exception e) {
+            Log.e("TasksAdapter", "Error showing Apply dialog: " + e.getMessage());
         }
     }
 }
